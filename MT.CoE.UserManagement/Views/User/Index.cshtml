@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.Welcome</h2>
+<div id="user-list">
+    <ul></ul>
+    <span>
+        <input type="text" id="user-name" placeholder="Enter user's name" />
+        <input type="number" id="user-age" placeholder="Enter user's age" />
+        <input type="text" id="user-city" placeholder="Enter user's city" />
+    </span>
+    <button id='add'>Add New User</button>
+</div>
+
+
+@*Always put knockout scripts on the end--DOM bindings must be set*@
+<script src="@Url.Content("~/Scripts/lib/jquery.Guid.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/lib/underscore.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/lib/backbone.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/app/model/UserModel.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/app/collection/Users.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/app/view/UserView.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/app/UserApp.js")" type="text/javascript"></script>
+
+@*Keep templates in a file*@
+<script type="text/template" id="user_template">
+    <li data-id="<%= user_id %>"><%= user_name %> | <%= user_age %> | <%= user_city %> <span class="delete" style="color:red; cursor:pointer">[delete]</span></li>
+</script>
