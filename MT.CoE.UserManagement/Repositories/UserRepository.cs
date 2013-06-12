@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Diagnostics;
+using System.Linq.Expressions;
 using MT.CoE.UserManagement.Models;
 using MongoRepository;
 
@@ -11,8 +12,12 @@ namespace MT.CoE.UserManagement.Repositories
     {
         static MongoRepository<User> _userRepo = new MongoRepository<User>();
 
+        /// <summary>
+        /// Test method- showcase for working with Mongo
+        /// </summary>
         public void TestMongoProvider()
-        {            var currentInDb = _userRepo.All();
+        {            
+            var currentInDb = _userRepo.All();
 
             var user1 = new User() { Name = "Marko Vesovic", Age = 66, City = "Sarajevo", ZipCode = "71000" };
             var user2 = new User() { Name = "keremito", Age = 21, City = "NYC", ZipCode = null };
@@ -47,12 +52,16 @@ namespace MT.CoE.UserManagement.Repositories
                             Debug.WriteLine("User get by predicate. Name: {0} (having {1} skills)",
                 getUser2.Name, getUser2.Skills.Count);
             }
-
-
+            
             _userRepo.DeleteAll();
             Debug.WriteLine("After delete all....");
             ShowAllUsers(currentInDb);
 
+        }
+
+        public IQueryable<User> GetUsers(Expression<Func<User, bool>> inCriteria)
+        {
+            return _userRepo.All(inCriteria).AsQueryable();
         }
 
         private void ShowAllUsers(IEnumerable<User> allUsers )
