@@ -3,27 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MongoRepository;
+using Newtonsoft.Json;
 
 namespace MT.CoE.UserManagement.Models
 {
     public class User : Entity
     {
-        public string Name { get; set; }
-        public string City { get; set; }
-        public string ZipCode { get; set; }
-        public int Age { get; set; }
-        public List<Skill> Skills { get; set; }
 
-        public  User()
-        {
-            this.Skills = new List<Skill>();
-        }
-    }
+        [JsonProperty(PropertyName = "id")]
+        public string UserId { get; set; }
 
-    public class Skill
-    {
-        public string Name { get; set; }
-        public int Id { get; set; }
-        public string Category { get; set; }
+        [JsonProperty(PropertyName = "firstName")]
+        public string FirstName { get; set; }
+
+        [JsonProperty(PropertyName = "lastName")]
+        public string LastName { get; set; }
+
+        [JsonProperty(PropertyName = "birthDate")]
+        public DateTime BirthDate { get; set; }
+
+        [JsonProperty(PropertyName = "address")]
+        public string Address { get; set; }
+
+        [JsonProperty(PropertyName = "phoneNo")]
+        public string PhoneNo { get; set; }
+
+        [JsonProperty(PropertyName = "email")]
+        public string Email { get; set; }
+
     }
 }

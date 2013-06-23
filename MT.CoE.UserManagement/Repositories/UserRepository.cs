@@ -19,38 +19,38 @@ namespace MT.CoE.UserManagement.Repositories
         {            
             var currentInDb = _userRepo.All();
 
-            var user1 = new User() { Name = "Marko Vesovic", Age = 66, City = "Sarajevo", ZipCode = "71000" };
-            var user2 = new User() { Name = "keremito", Age = 21, City = "NYC", ZipCode = null };
-            var user3 = new User() { Name = "Omer Asik", Age = 29, City = "Houston", ZipCode = "77077" };
+            var user1 = new User() { FirstName = "Marko Vesovic", PhoneNo = "66", Address = "Sarajevo", Email = "71000" };
+            var user2 = new User() { FirstName = "keremito", PhoneNo = "21", Address = "NYC", Email = null };
+            var user3 = new User() { FirstName = "Omer Asik", PhoneNo = "29", Address = "Houston", Email = "77077" };
             _userRepo.Add(new[] { user1, user2, user3 });
 
             ShowAllUsers(currentInDb);
             
-            user2.Name = "John Kerry";
+            user2.FirstName = "John Kerry";
             _userRepo.Update(user2);
 
-            user3.Age = 25;
+            user3.PhoneNo = "25";
             _userRepo.Update(user3);
 
             ShowAllUsers(currentInDb);
 
-            user2.Skills.AddRange(new[]
-                {
-                    new Skill(){Name = "Javascript",Category = "Programming Language"}, 
-                    new Skill(){Name = "C#",Category = "Programming Language"}, 
-                    new Skill(){Name = "Table Football",Category = "Social Skills"}
-                });
+            //user2.Skills.AddRange(new[]
+            //    {
+            //        new Skill(){FirstName = "Javascript",Category = "Programming Language"}, 
+            //        new Skill(){FirstName = "C#",Category = "Programming Language"}, 
+            //        new Skill(){FirstName = "Table Football",Category = "Social Skills"}
+            //    });
             _userRepo.Update(user2);
             ShowAllUsers(currentInDb);
 
             var getUser1 = _userRepo.GetById(user2.Id);
-            Debug.WriteLine("User get by ID. Name: {0} (having {1} skills)",
-                getUser1.Name, getUser1.Skills.Count);
-            var getUser2 = _userRepo.GetSingle(u => u.Name.StartsWith( "Marko"));
+            Debug.WriteLine("User get by ID. FirstName: {0} (having {1} skills)",
+                getUser1.FirstName, "Skills");
+            var getUser2 = _userRepo.GetSingle(u => u.FirstName.StartsWith( "Marko"));
             if (getUser2 != null)
             {
-                            Debug.WriteLine("User get by predicate. Name: {0} (having {1} skills)",
-                getUser2.Name, getUser2.Skills.Count);
+                            Debug.WriteLine("User get by predicate. FirstName: {0} (having {1} skills)",
+                getUser2.FirstName, "Skills");
             }
             
             _userRepo.DeleteAll();
@@ -68,13 +68,13 @@ namespace MT.CoE.UserManagement.Repositories
         {
             foreach (var user in allUsers)
             {
-                Debug.WriteLine("Debug : User name = " + user.Name);
-                Debug.WriteLine("Debug : User age = " + user.Age);
-                Debug.WriteLine("Debug : User has {0} skills = ", user.Skills.Count );
-                foreach (var userSkill in user.Skills)
-                {
-                    Debug.WriteLine("Debug : User skill = " + userSkill.Name);
-                }
+                Debug.WriteLine("Debug : User FirstName = " + user.FirstName);
+                Debug.WriteLine("Debug : User address = " + user.Address);
+                Debug.WriteLine("Debug : User has {0} skills = ", "" );
+                //foreach (var userSkill in user.Skills)
+                //{
+                //    Debug.WriteLine("Debug : User skill = " + userSkill.FirstName);
+                //}
                 Debug.WriteLine("-------");
                 
             }

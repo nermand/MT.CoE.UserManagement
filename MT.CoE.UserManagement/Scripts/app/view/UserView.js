@@ -3,19 +3,26 @@
 
     events: {
         'click button#add': 'addItem',
-        'click span.delete': 'deleteUser'
+        'click span.delete': 'deleteUser',
+        'click button#save': 'saveUsers'
     },
     initialize: function () {
-        _.bindAll(this, 'render', 'addItem', 'appendUser', 'deleteUser');
+        _.bindAll(this, 'render', 'addItem', 'appendUser', 'deleteUser', 'saveUsers');
 
         this.collection = new Users();
-
-        //Get data from server - initial load! Add to collection and then:
-        var newUser = new UserModel({ id: jQuery.Guid.New(), name: "Nerman", age: 33, city: "Sarajevo" });
-        this.collection.add(newUser);
-
         this.collection.bind('add', this.appendUser);
+
+        this.collection.fetch();
         this.render();
+        //var newUser = new UserModel({ id: jQuery.Guid.New(), name: "Nerman", age: 33, city: "Sarajevo" });
+        //this.collection.add(newUser);
+
+
+        //Backbone.sync('create', this.collection.models, {
+        //    success: function () {
+        //        console.log('users saved!');
+        //    }
+        //});
     },
 
     render: function () {
@@ -24,6 +31,12 @@
         _(this.collection.models).each(function (user) {
             self.appendUser(user);
         });
+    },
+
+    appendUser: function (item) {
+        var variables = { user_id: item.get("id"), user_name: item.get("name"), user_city: item.get("city"), user_age: item.get("age") };
+        var template = _.template($("#user_template").html(), variables);
+        $('ul', $(this.el)).append(template);
     },
     
     addItem: function () {
@@ -38,12 +51,6 @@
         console.log(this.collection.count().length);
     },
 
-    appendUser: function (item) {
-        var variables = { user_id: item.get("id"), user_name: item.get("name"), user_city: item.get("city"), user_age: item.get("age") };
-        var template = _.template($("#user_template").html(), variables);
-        $('ul', $(this.el)).append(template);
-    },
-
     deleteUser: function (e) {
         e.preventDefault();
         var $li = $(e.currentTarget).parent();
@@ -52,5 +59,12 @@
         this.collection.remove(thisUser);
         $li.remove();
         console.log(this.collection.count().length);
+    },
+
+    saveUsers: function () {
+        console.log('save?');
+        this.collection.save();
     }
+    
+
 });
