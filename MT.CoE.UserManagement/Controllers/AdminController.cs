@@ -19,34 +19,34 @@ namespace MT.CoE.UserManagement.Controllers
             return View();
         }
 
-        [HttpGet]
-        public JsonResult UserList() {
-            var rep = new Repositories.UserRepository();
-            rep.TestMongoProvider();
+        //[HttpGet]
+        //public JsonResult UserList() {
+        //    var rep = new Repositories.UserRepository();
+        //    rep.TestMongoProvider();
 
-            var user = new List<User>();
-            user.Add(new User()
-                         {
-                             Address = "New Haven",
-                             UserId = Guid.NewGuid().ToString(),
-                             FirstName = "Jonathan",
-                             LastName = "Jonathan",
-                             BirthDate = new DateTime(1980, 3, 31),
-                             Email = "Jonathan@mail.com",
-                             PhoneNo = "---"
-                         });
-            user.Add(new User()
-                         {
-                             Address = "Sarajevo", 
-                             Id = Guid.NewGuid().ToString(), 
-                             FirstName = "Bones",
-                             LastName = "Bones Lastname",
-                             BirthDate = new DateTime(1968, 5, 11),
-                             Email = "Bones@mail.com"
-                         });
+        //    var user = new List<User>();
+        //    user.Add(new User()
+        //                 {
+        //                     Address = "New Haven",
+        //                     UserId = Guid.NewGuid().ToString(),
+        //                     FirstName = "Jonathan",
+        //                     LastName = "Jonathan",
+        //                     BirthDate = new DateTime(1980, 3, 31),
+        //                     Email = "Jonathan@mail.com",
+        //                     PhoneNo = "---"
+        //                 });
+        //    user.Add(new User()
+        //                 {
+        //                     Address = "Sarajevo", 
+        //                     Id = Guid.NewGuid().ToString(), 
+        //                     FirstName = "Bones",
+        //                     LastName = "Bones Lastname",
+        //                     BirthDate = new DateTime(1968, 5, 11),
+        //                     Email = "Bones@mail.com"
+        //                 });
 
-            return Json(user, JsonRequestBehavior.AllowGet);
-        }
+        //    return Json(user, JsonRequestBehavior.AllowGet);
+        //}
 
     }
 

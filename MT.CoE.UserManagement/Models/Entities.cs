@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace MT.CoE.UserManagement.Models
 {
-    public class User : Entity
+    public class Entities : Entity
     {
 
         [JsonProperty(PropertyName = "id")]
