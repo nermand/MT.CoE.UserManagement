@@ -16,5 +16,10 @@ namespace MT.CoE.UserManagement.Repositories
         {
             return Company.All();
         }
+
+        public void Save(Company item)
+        {
+            Company.Add(item);
+        }
     }
 }

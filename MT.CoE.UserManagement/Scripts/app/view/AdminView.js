@@ -3,7 +3,7 @@
 
     initialize: function () {
         $("#user").hide();
-        _.bindAll(this, 'render', 'appendUser', 'addUser', 'saveUser', 'deleteUser');
+        _.bindAll(this, 'render', 'appendUser', 'editUser', 'addUser', 'deleteUser', 'selectUser');
         this.collection = new Users();
         this.collection.bind('add', this.appendUser);
 
@@ -11,41 +11,65 @@
     },
 
     events: {
+        'click button#edit': 'editUser',
         'click button#add': 'addUser',
-        'click button#save': 'saveUser',
-        'click span.delete': 'deleteUser'
+        'click button#delete': 'deleteUser',
+        'click div.edit-user': 'selectUser'
     },
 
     appendUser: function (item) {
         var variables = {
-            user_id: item.get("id"),
+            userId: item.get("id"),
             firstName: item.get("firstName"),
             lastName: item.get("lastName"),
+            phoneNumber: item.get("phoneNumber"),
+            description: item.get("description"),
+            companyName: item.get("companyName"),
             address: item.get("address"),
-            birthDate: item.get("birthDate"),
-            email: item.get("email"),
-            phoneNo: item.get("phoneNo")
+            postalCode: item.get("postalCode"),
+            cityName: item.get("cityName"),
+            country: item.get("country"),
+            picUrl: item.get("picUrl")
         };
         var template = _.template($("#user_template").html(), variables);
         $('ul', $(this.el)).append(template);
     },
 
+    editUser: function () {
+        var selectedDiv = $("div.basic.selected");
+        var userId = selectedDiv.data('id');
+        if (typeof userId !== 'number') {
+            alert("Select user you want to edit!");
+            return;
+        }
+        
+        $("#user-list").hide("explode", 1000, function () {
+            window.location.href = "/EditUser--Ervin?/" + userId;
+        });
+        
+    },
+
     addUser: function () {
-        console.log('Adding user..');
+        alert('Redirect to page where admin can add new user..');
     },
 
-    saveUser: function () {
-        console.log('Saving user..');
-    },
-
-    deleteUser: function (e) {
-        e.preventDefault();
-        var $li = $(e.currentTarget).parent();
-        var id = $li.data("id");
-        var thisUser = this.collection.get(id);
+    deleteUser: function () {
+        var selectedDiv = $("div.basic.selected");
+        var userId = selectedDiv.data('id');
+        if (typeof userId !== 'number') {
+            alert("Select user you want to delete!");
+            return;
+        }
+        var thisUser = this.collection.get(userId);
         this.collection.remove(thisUser);
-        $li.remove();
-        console.log(this.collection.count().length);
-    }
+        selectedDiv.remove();
+        alert('Deleted from DOM - not implemented on DB, don\'t feel like doing it :)');
+    },
     
+    selectUser: function (e) {
+        var thisUser = $(e.currentTarget);
+        $("div.basic").removeClass("selected");
+        thisUser.closest(".basic").addClass("selected");
+        //console.log("Editing current user", thisUser.find("span:first").text(), thisUser.closest(".basic").data("id"));
+    }    
 });

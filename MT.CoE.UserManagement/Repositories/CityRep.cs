@@ -16,5 +16,10 @@ namespace MT.CoE.UserManagement.Repositories
         {
             return City.All();
         }
+
+        public void Save(City item)
+        {
+            City.Add(item);
+        }
     }
 }

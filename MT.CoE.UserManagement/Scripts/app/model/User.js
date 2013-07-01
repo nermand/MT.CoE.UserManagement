@@ -2,8 +2,9 @@
     initialize: function () {
         console.log("New User created: " + this.get("firstName"));
     },
-    //url: "User/Test",
-
+    
+    url: "Admin/SingleUser",
+    
     defaults: {
         id: -1,
         firstName: 'DefaultName',

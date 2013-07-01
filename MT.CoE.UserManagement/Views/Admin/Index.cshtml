@@ -2,14 +2,8 @@
     ViewBag.Title = "Index";
 }
 
-<style type="text/css">
-    .user-list  {
-        display: block
-    }
-</style>
-
 <h2>@ViewBag.Welcome</h2>
-<div id="user">
+@*<div id="user">
     <ul title="Personal Details/ Info"></ul>
     <span>
         <input type="text" id="firstName" placeholder="First Name" />
@@ -20,9 +14,11 @@
         <input type="email" id="email" placeholder="Email address" />
     </span>
     <button id='back'>Back to user list</button>
-</div>
+</div>*@
 <div id="user-list">
     <ul title="Users list"></ul>
+    <button id='edit'>Edit Selected User</button>
+    <button id='delete'>Delete Selected User</button>
     <button id='add'>Add New User</button>
 </div>
 
@@ -35,14 +31,40 @@
     })(jQuery);
 </script>
 
-@*Always put knockout scripts on the end--DOM bindings must be set*@
+@*Always put scripts on the end--DOM bindings must be set*@
 <script src="@Url.Content("~/Scripts/lib/underscore.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/lib/backbone.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/app/model/User.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/app/collection/Users.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/app/view/AdminView.js")" type="text/javascript"></script>
+<link href="~/Content/People.css" rel="stylesheet" />
+<style type="text/css">
+    .edit-user {
+        cursor: pointer;
+        border: 1px #999 solid;
+    }
+    .selected {
+        background: #96D2F2;
+    }
+</style>
 
 @*Keep templates in a file*@
-<script type="text/template" id="user_template">
-    <li data-id="<%= user_id %>"><%= firstName %> | <%= lastName %> | <%= address %> | <%= birthDate %> | <%= email %> | <%= phoneNo %> <span class="delete" style="color:red; cursor:pointer">[delete]</span></li>
+<script type="text/template" id="user_template">    
+    <div class="basic" data-id="<%= userId %>">
+        <div class="basicImg">
+            <img class="basicImg" src="<%= picUrl %>" />
+        </div>
+        <div class="edit-user">
+            <span class="basicTitle"><%= firstName %> <%= lastName %></span><br />
+            <span class="basicDescription"><%= phoneNumber %></span><br />
+            <span class="basicDescription"><%= description %></span><br />
+            <span class="basicDescription"><%= companyName %></span><br />
+            <br />
+            <br />
+            <span class="basicDescription">Address:</span><br />
+            <span class="basicAddress"><%= address %></span><br />
+            <span class="basicAddress"><%= postalCode %> <%= cityName %></span><br />
+            <span class="basicAddress"><%= country %></span>
+        </div>
+    </div>
 </script>

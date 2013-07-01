@@ -16,5 +16,10 @@ namespace MT.CoE.UserManagement.Repositories
         {
             return Job.All();
         }
+        
+        public void Save(Job item)
+        {
+            Job.Add(item);
+        }
     }
 }
