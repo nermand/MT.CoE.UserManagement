@@ -62,8 +62,10 @@
         }
         var thisUser = this.collection.get(userId);
         this.collection.remove(thisUser);
-        selectedDiv.remove();
-        alert('Deleted from DOM - not implemented on DB, don\'t feel like doing it :)');
+        selectedDiv.hide("fold", 800, function() {
+            selectedDiv.remove();
+            alert('Deleted from DOM - not implemented on DB, don\'t feel like doing it :)');
+        });
     },
     
     selectUser: function (e) {

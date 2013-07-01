@@ -293,6 +293,7 @@
     <Compile Include="ViewModels\Admin\UserList.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin.css" />
     <Content Include="Content\Images\Anita.png" />
     <Content Include="Content\Images\Ervin.PNG" />
     <Content Include="Content\Images\Matej.PNG" />
