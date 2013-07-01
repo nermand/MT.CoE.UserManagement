@@ -257,26 +257,39 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\People\PeopleController.cs" />
     <Compile Include="Controllers\UserController.cs" />
-    <Compile Include="Database_old\IDbProvider.cs" />
-    <Compile Include="Database_old\MongoProvider.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Certificate.cs" />
+    <Compile Include="Models\City.cs" />
+    <Compile Include="Models\Company.cs" />
     <Compile Include="Models\Entities.cs" />
     <Compile Include="Models\Entity.cs" />
-    <Compile Include="Models\Skill_old.cs" />
+    <Compile Include="Models\Faculty.cs" />
+    <Compile Include="Models\HighSchool.cs" />
+    <Compile Include="Models\Job.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Task.cs" />
-    <Compile Include="Models\User_old.cs" />
+    <Compile Include="Models\Technology.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\Anita.png" />
+    <Content Include="Content\Images\Ervin.PNG" />
+    <Content Include="Content\Images\Matej.PNG" />
+    <Content Include="Content\Images\Nerman.PNG" />
+    <Content Include="Content\Images\Zina.PNG" />
+    <Content Include="Content\People.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -334,12 +347,12 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\app\backbone\app.js" />
-    <Content Include="Scripts\app\backbone\appCollection.js" />
     <Content Include="Scripts\app\backbone\appView.js" />
     <Content Include="Scripts\app\collection\Users.js" />
     <Content Include="Scripts\app\index.js" />
-    <Content Include="Scripts\app\model\UserModel.js" />
+    <Content Include="Scripts\app\model\User.js" />
     <Content Include="Scripts\app\UserApp.js" />
+    <Content Include="Scripts\app\view\AdminView.js" />
     <Content Include="Scripts\app\view\UserView.js" />
     <Content Include="Scripts\lib\backbone.js" />
     <None Include="BundleTransformer.Configuration.xsd">
@@ -367,9 +380,8 @@
     <Content Include="Scripts\lib\modernizr-1.7.js" />
     <Content Include="Scripts\lib\modernizr-1.7.min.js" />
     <Content Include="Scripts\lib\underscore.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Scripts\People\People.js" />
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -408,6 +420,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\People\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

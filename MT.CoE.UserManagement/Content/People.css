@@ -1,0 +1,41 @@
+﻿.breakline
+{
+    display: block;
+    clear: both;
+    height: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-color: #000;
+    border-bottom-color: #262626;
+}
+.basic {
+    width:100%
+}
+.basicTitle
+{
+    margin-left: 1.5%;
+    color: navy;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.basicDescription
+{
+    margin-left: 1.5%;
+    color: dimgrey;
+    font-size: 14px;
+    font-weight: bold;
+}
+.basicAddress
+{
+    margin-left: 1.5%;
+    color: dimgrey;
+    font-size: 14px
+}
+.basicImg {
+    width: 195px; 
+    height: 195px; 
+    float: left
+}
