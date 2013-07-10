@@ -12,9 +12,9 @@
     },
     
     deleteUser: function (userId, callback) {
-        console.log("this", this);
+        //console.log("this", this);
         this.url += '/' + userId;
-        console.log('Url: ', this.url);
+        //console.log('Url: ', this.url);
         this.destroy({
             success: function (model, response) {
                 if (response.success) {
