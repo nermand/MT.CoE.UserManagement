@@ -11,9 +11,9 @@
     },
 
     events: {
-        'click button#edit': 'editUser',
-        'click button#add': 'addUser',
-        'click button#delete': 'deleteUser',
+        'click a#edit': 'editUser',
+        'click a#add': 'addUser',
+        'click a#delete': 'deleteUser',
         'click div.edit-user': 'selectUser'
     },
 
@@ -44,7 +44,8 @@
         }
         
         $("#user-list").hide("explode", 1000, function () {
-            window.location.href = "/EditUser--Ervin?/" + userId;
+            alert('Editing user id: ' + userId);
+            //window.location.href = "/EditUser--Ervin?/" + userId;
         });
         
     },
@@ -62,16 +63,23 @@
         }
         var thisUser = this.collection.get(userId);
         this.collection.remove(thisUser);
-        selectedDiv.hide("fold", 800, function() {
-            selectedDiv.remove();
-            alert('Deleted from DOM - not implemented on DB, don\'t feel like doing it :)');
+        thisUser.deleteUser(userId, function (result, text) {
+            if (result) {
+                selectedDiv.hide("fold", 800, function () {
+                    selectedDiv.remove();
+                });
+            }
+            alert(text);
         });
+  
     },
     
     selectUser: function (e) {
-        var thisUser = $(e.currentTarget);
+        var thisUser = $(e.currentTarget).parent("div");
         $("div.basic").removeClass("selected");
         thisUser.closest(".basic").addClass("selected");
-        //console.log("Editing current user", thisUser.find("span:first").text(), thisUser.closest(".basic").data("id"));
+        thisUser.parent().find("div:first").before(thisUser.clone());
+        thisUser.remove();
+        $(window).scrollTop($('#user-list').offset().top);
     }    
 });

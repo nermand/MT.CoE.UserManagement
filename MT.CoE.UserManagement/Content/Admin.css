@@ -5,3 +5,32 @@
     .selected {
         background: #96D2F2;
     }
+
+.button {
+	-moz-box-shadow:inset 0px 0px 0px -4px #cae8d5;
+	-webkit-box-shadow:inset 0px 0px 0px -4px #cae8d5;
+	box-shadow:inset 0px 0px 0px -4px #cae8d5;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c3e0c0), color-stop(1, #d3bfe3) );
+	background:-moz-linear-gradient( center top, #c3e0c0 5%, #d3bfe3 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c3e0c0', endColorstr='#d3bfe3');
+	background-color:#c3e0c0;
+	-moz-border-radius:14px;
+	-webkit-border-radius:14px;
+	border-radius:14px;
+	border:4px solid #a4d993;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Verdana;
+	font-size:16px;
+	font-weight:bold;
+	padding:7px 36px;
+	text-decoration:none;
+}.button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #d3bfe3), color-stop(1, #c3e0c0) );
+	background:-moz-linear-gradient( center top, #d3bfe3 5%, #c3e0c0 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#d3bfe3', endColorstr='#c3e0c0');
+	background-color:#d3bfe3;
+}.button:active {
+	position:relative;
+	top:1px;
+}

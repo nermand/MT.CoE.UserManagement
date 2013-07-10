@@ -12,11 +12,13 @@ namespace MT.CoE.UserManagement.Controllers
 {
     public class AdminController : Controller
     {
+        readonly static UserRep UserRep = new UserRep();
         //
         // GET: /Admin/
 
         public ActionResult Index()
         {
+            InitializeUsers();
             ViewBag.Welcome = "Admin panel - add/edit users";
             return View();
         }
@@ -81,12 +83,30 @@ namespace MT.CoE.UserManagement.Controllers
             return result;
         }
 
-        [HttpPost]
-        public JsonResult SingleUser()
+        [HttpPost, ActionName("SingleUser")]
+        public JsonResult SingleUserPost()
         {
             var user = new List<User>();
 
             return Json(user, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpDelete]
+        [ActionName("SingleUser")]
+        public JsonResult SingleUserDelete(int id)
+        {
+            try
+            {
+                UserRep.Delete(id);
+            }
+            catch (Exception ex)
+            {
+
+                return Json(new { error = ex.Message }
+                                , JsonRequestBehavior.AllowGet);
+            }
+
+            return Json(new { success= true}, "User",  JsonRequestBehavior.AllowGet);
         }
 
         private void CreateCollections()
@@ -124,7 +144,12 @@ namespace MT.CoE.UserManagement.Controllers
             companyRep.Save(company);
 
 
-            var userDb = new User() {
+
+        }
+
+        private void InitializeUsers()
+        {
+                        var userDb = new User() {
                 UserId = 1,
                 Address = "Azize Šaćirbegović 1",
                 CertId = 0,
@@ -219,6 +244,7 @@ namespace MT.CoE.UserManagement.Controllers
                 TechId = 0
             };
             var userRep = new UserRep();
+            userRep.DeleteAll();
             userRep.InsertUser(userDbAnita);
             userRep.InsertUser(userDbErvin);
             userRep.InsertUser(userDbMatej);

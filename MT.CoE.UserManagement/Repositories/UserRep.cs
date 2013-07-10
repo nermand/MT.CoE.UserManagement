@@ -21,5 +21,15 @@ namespace MT.CoE.UserManagement.Repositories
         {
             User.Add(newUser);
         }
+
+        public void Delete(int userId)
+        {
+            User.Delete(user => user.UserId.Equals(userId));
+        }
+
+        public void DeleteAll()
+        {
+            User.DeleteAll();
+        }
     }
 }

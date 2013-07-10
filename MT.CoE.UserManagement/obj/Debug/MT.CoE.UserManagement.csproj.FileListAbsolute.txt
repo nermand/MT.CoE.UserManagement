@@ -130,7 +130,6 @@ C:\Users\Nerman\Dropbox\Projects\MT.CoE.UserManagement\MT.CoE.UserManagement\bin
 C:\Users\Nerman\Dropbox\Projects\MT.CoE.UserManagement\MT.CoE.UserManagement\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\Nerman\Dropbox\Projects\MT.CoE.UserManagement\MT.CoE.UserManagement\bin\zh-Hant\System.Spatial.resources.dll
 C:\Users\Nerman\Dropbox\Projects\MT.CoE.UserManagement\MT.CoE.UserManagement\obj\Debug\MT.CoE.UserManagement.csproj.App.config
-C:\Users\Nerman\Dropbox\Projects\MT.CoE.UserManagement\MT.CoE.UserManagement\obj\Debug\MT.CoE.UserManagement.csprojResolveAssemblyReference.cache
 C:\Users\Nerman\Dropbox\Projects\MT.CoE.UserManagement\MT.CoE.UserManagement\obj\Debug\MT.CoE.UserManagement.dll
 C:\Users\Nerman\Dropbox\Projects\MT.CoE.UserManagement\MT.CoE.UserManagement\obj\Debug\MT.CoE.UserManagement.pdb
 D:\Development\MT.CoE.UserManagement\MT.CoE.UserManagement\bin\MT.CoE.UserManagement.dll.config
