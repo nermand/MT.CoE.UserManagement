@@ -63,7 +63,7 @@
         }
         var thisUser = this.collection.get(userId);
         this.collection.remove(thisUser);
-        thisUser.deleteUser(userId, function (result, text) {
+        thisUser.deleteUser(function (result, text) {
             if (result) {
                 selectedDiv.hide("fold", 800, function () {
                     selectedDiv.remove();

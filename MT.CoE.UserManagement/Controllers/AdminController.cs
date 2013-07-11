@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using DotNetOpenAuth.OpenId.Extensions.AttributeExchange;
 using MT.CoE.UserManagement.Models;
 using MT.CoE.UserManagement.Repositories;
 using MT.CoE.UserManagement.ViewModels.Admin;
@@ -13,12 +11,11 @@ namespace MT.CoE.UserManagement.Controllers
     public class AdminController : Controller
     {
         readonly static UserRep UserRep = new UserRep();
-        //
         // GET: /Admin/
 
         public ActionResult Index()
         {
-            InitializeUsers();
+            CreateCollections();
             ViewBag.Welcome = "Admin panel - add/edit users";
             return View();
         }
@@ -111,6 +108,9 @@ namespace MT.CoE.UserManagement.Controllers
 
         private void CreateCollections()
         {
+            InitializeUsers();
+            return;
+
             var city = new City() {
                 CityId = 1,
                 CityName = "Sarajevo",

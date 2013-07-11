@@ -28,6 +28,7 @@
     count: function () {
         return this.filter(function (n) { return n.get('firstName'); });
     }
+
     //,save: function () {
     //    Backbone.sync('create', this, {
     //        success: function () {

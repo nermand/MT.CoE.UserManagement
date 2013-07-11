@@ -1,1 +1,6 @@
 _ReSharper*
+[Dd]ebug*/
+[Rr]elease*/
+*/[Bb]in/*
+MT.CoE.UserManagement/bin/MT.CoE.UserManagement*
+*bin/MT.CoE.UserManagement*

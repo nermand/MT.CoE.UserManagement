@@ -11,9 +11,9 @@
         lastName: 'DefaultLastName'
     },
     
-    deleteUser: function (userId, callback) {
+    deleteUser: function (callback) {
         //console.log("this", this);
-        this.url += '/' + userId;
+        this.url += '/' + this.get('id');
         //console.log('Url: ', this.url);
         this.destroy({
             success: function (model, response) {
